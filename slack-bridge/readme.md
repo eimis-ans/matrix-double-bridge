@@ -18,10 +18,8 @@ then
 docker-compose up -d
 ```
 
-## Setup Slack
+### Configure Slack application
 
-Instruction here : <https://matrix-appservice-slack.readthedocs.io/en/latest/link_channels/>
+Create a Slack application, instruction here : <https://matrix-appservice-slack.readthedocs.io/en/latest/link_channels/>
 
-```txt
-link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.{{ DOMAIN }} --slack_bot_token $TOKEN
-```
+You should get a token for your slack bot.

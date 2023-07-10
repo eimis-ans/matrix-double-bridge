@@ -40,13 +40,20 @@ Go to element.YOUR-DOMAIN, login and
 
 #### Slack bridge admin room
 
-Go to matrix and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run `./setup-variable.sh`
+- Go to element and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run `./setup-variable.sh`
 
 ### Setup bridge app
 
 Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
 
 Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
+
+- invite slack bot `slackbot` to your slack admin room
+- link a slack clannel 
+
+   ```txt
+   link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.{{ DOMAIN }} --slack_bot_token $TOKEN
+   ```
 
 ## Setup a conversation between slack and discord
 
