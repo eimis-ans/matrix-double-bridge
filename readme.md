@@ -8,6 +8,7 @@ With the deployment of a Synapse instance with it's Element client and 2 bridges
 
 - a server with docker and docker-compose installed
 - traefik running and configured with a domain name
+- [yq](https://github.com/kislyuk/yq) package installed
 
 ## Installations
 
@@ -26,16 +27,20 @@ Follow the instructions there : [Matrix](matrix/readme.md)
 
 Follow the instructions there : [discord-bridge](discord-bridge/readme.md)
 
-### Setup Slack bridge
+Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
 
-Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
+### Setup Slack bridge
 
 #### Slack bridge admin room
 
 Go to matrix and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run `./setup-variable.sh`
 
-## Conclusions
+### Setup bridge app
 
-- The bridge can create users and act for the behalf of then : send messages etc...
-  ->  So it should be possible to do this :
-- Bridges have to be able to read messages specially for bots to answer commands so it doesn't work if the rooms are encrypted ⚠️
+Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
+
+Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
+
+## Setup a conversation between slack and discord
+
+...
