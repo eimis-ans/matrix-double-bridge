@@ -14,6 +14,15 @@ function replace_everywhere() {
 
 }
 
+echo set passwords...
+files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name ".env" \))
+
+# Iterate over each file
+for file in $files; do
+    # Replace the old value with the new value using sed
+    sed -i "s/{{ password }}/$(openssl rand -base64 12)/g" "$file"
+done
+
 echo Replace variables...
 while IFS= read -r line || [[ -n "$line" ]]; do
     # Skip empty lines and lines starting with #
@@ -36,14 +45,5 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     replace_everywhere $key $value
     
 done < "$env_file"
-
-echo set passwords...
-files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name ".env" \))
-
-# Iterate over each file
-for file in $files; do
-    # Replace the old value with the new value using sed
-    sed -i "s/{{ password }}/$(openssl rand -base64 12)/g" "$file"
-done
 
 echo done.
