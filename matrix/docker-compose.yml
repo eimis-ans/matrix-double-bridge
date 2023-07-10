@@ -23,7 +23,7 @@ services:
       - SYNAPSE_CONFIG_PATH=/mx-conf/homeserver.yaml
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.synapse.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.synapse.rule=Host(`matrix.${DOMAIN}`)"
       - "traefik.http.routers.synapse.entrypoints=websecure"
       - "traefik.http.services.synapse.loadbalancer.server.port=8008"
       - "traefik.http.routers.synapse.tls=true"
