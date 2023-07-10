@@ -1,5 +1,0 @@
-*.db
-*registration.yaml
-*.log.config
-*.signing.key
-media_store/**
