@@ -13,17 +13,31 @@ With the deployment of a Synapse instance with it's element client and 2 bridges
 
 ## Installations
 
-Run
+### Set variables
 
 ```bash
 ./setup-variables.sh
 ```
 
-Follow these:
+### Setup matrix
 
-- [Matrix](matrix/readme.md)
-- [Slack-bridge](slack-bridge/readme.md)
-- [discord-bridge](discord-bridge/readme.md)
+Follow the instructions there : [Matrix](matrix/readme.md)
+
+### Setup discord bridge
+
+Follow the instructions there : [discord-bridge](discord-bridge/readme.md)
+
+### Setup Slack bridge
+
+Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
+
+#### Slack bridge admin room
+
+Go to matrix and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run
+
+```bash
+./setup-variable.sh
+```
 
 ## Conclusions
 
