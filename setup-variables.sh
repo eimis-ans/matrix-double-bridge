@@ -39,6 +39,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     value="${value#"${value%%[![:space:]]*}"}"
     value="${value%"${value##*[![:space:]]}"}"
     
+    if [[ -z $value ]]; then
+        continue 
+    fi
+
     # Perform operations with the key and value
     echo "Replace: $key"
     
