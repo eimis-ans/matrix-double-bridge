@@ -1,0 +1,44 @@
+version: "3.3"
+
+services:
+  synapse_db:
+    image: postgres:14-alpine
+    volumes:
+     - matrix-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=synapse
+      - POSTGRES_USER=synapse
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+
+  element:
+    image: vectorim/element-web:v1.11.31
+    volumes:
+      - ./element-config.json:/app/config.json
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.element.rule=Host(`element.${DOMAIN}`)"
+      - "traefik.http.routers.element.entrypoints=websecure"
+      - "traefik.http.services.element.loadbalancer.server.port=80"
+      - "traefik.http.routers.element.tls=true"
+      - "traefik.http.routers.element.tls.certresolver=letsencrypt"
+
+  synapse:
+    image: matrixdotorg/synapse:v1.83.0
+    volumes:
+     - ./synapse:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.synapse.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.synapse.entrypoints=websecure"
+      - "traefik.http.services.synapse.loadbalancer.server.port=8008"
+      - "traefik.http.routers.synapse.tls=true"
+      - "traefik.http.routers.synapse.tls.certresolver=letsencrypt"
+
+volumes:
+  matrix-db:
+
+networks:
+  default:
+    external: true
+    name: ${TRAEFIK_NETWORK}

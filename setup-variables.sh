@@ -14,7 +14,7 @@ function replace_everywhere() {
 
 }
 
-echo Replace variables
+echo Replace variables...
 while IFS= read -r line || [[ -n "$line" ]]; do
     # Skip empty lines and lines starting with #
     if [[ -z "$line" || "$line" == "#"* ]]; then
@@ -46,4 +46,4 @@ for file in $files; do
     sed -i "s/{{ password }}/$(openssl rand -base64 12)/g" "$file"
 done
 
-echo finished
+echo done.
