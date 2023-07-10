@@ -20,7 +20,7 @@ files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name ".env" \))
 # Iterate over each file
 for file in $files; do
     # Replace the old value with the new value using sed
-    sed -i "s/{{ password }}/$(openssl rand -base64 12)/g" "$file"
+    sed -i "s/{{ password }}/$(openssl rand -hex 20)/g" "$file"
 done
 
 echo Replace variables...
