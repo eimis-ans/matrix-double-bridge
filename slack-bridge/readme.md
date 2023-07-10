@@ -2,6 +2,11 @@
 
 > <https://github.com/matrix-org/matrix-appservice-slack>
 
+## Prerequisites
+
+`../setup-variable.sh` has been run
+
+
 ## Install bridge
 
 Run

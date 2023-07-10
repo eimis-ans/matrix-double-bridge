@@ -1,6 +1,6 @@
 # Synapse instance
 
-## Configuration
+## Prerequisites
 
 `../setup-variable.sh` has been run
 
@@ -23,3 +23,7 @@ docker-compose up -d
 ```bash
 docker exec -it matrix_synapse_1 register_new_matrix_user -c /data/homeserver.yaml
 ```
+
+## Log in
+
+You can go to your instance at <https://element.YOUR-DOMAIN>

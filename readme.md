@@ -2,9 +2,7 @@
 
 > The goal of this repo is improve skills about Matrix and Matrix bridges
 
-With the deployment of a Synapse instance with it's element client and 2 bridges : slack and discord.
-
-## Docs
+With the deployment of a Synapse instance with it's Element client and 2 bridges : Slack and Discord.
 
 ## Prerequisites
 
@@ -15,9 +13,10 @@ With the deployment of a Synapse instance with it's element client and 2 bridges
 
 ### Set variables
 
-```bash
-./setup-variables.sh
-```
+- Run `cp .env_template .env`
+- Run `chmod +x setup-variables.sh`
+- Set variables then run `./setup-variables.sh`
+  (this script can be run each time a line is filled in .env file)
 
 ### Setup matrix
 
@@ -33,11 +32,7 @@ Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
 
 #### Slack bridge admin room
 
-Go to matrix and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run
-
-```bash
-./setup-variable.sh
-```
+Go to matrix and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run `./setup-variable.sh`
 
 ## Conclusions
 

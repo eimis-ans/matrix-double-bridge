@@ -2,9 +2,13 @@
 
 > Bridge doc : <https://github.com/matrix-org/matrix-appservice-discord>
 
+## Prerequisites
+
+`../setup-variable.sh` has been run
+
 ## Setup discord
 
-Instructions here : <https://github.com/matrix-org/matrix-appservice-discord>
+Instructions here : <https://github.com/matrix-org/matrix-appservice-discord#setting-up-discord>
 
 ### Get invite url
 
@@ -14,6 +18,8 @@ Go to <https://discord.com/api/oauth2/authorize?client_id=${CLIENT_IT}&scope=bot
 
 ```bash
 ./generate-app-file.sh
+# then
+docker-compose up -d
 ```
 
 ## ⚠️ Caveat
