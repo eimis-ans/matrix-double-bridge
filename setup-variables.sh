@@ -5,7 +5,7 @@ env_file=".env"
 
 function replace_everywhere() {
 
-    files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name ".env" \))
+    files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name "*.json" -o -name ".env" \))
 
     for file in $files; do
         # Replace the old value with the new value using sed
@@ -15,7 +15,7 @@ function replace_everywhere() {
 }
 
 echo set passwords...
-files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name ".env" \))
+files=$(find . -type f \( -name "*.yaml" -o -name "*.yml" -o -name "*.json" -o -name ".env" \))
 
 # Iterate over each file
 for file in $files; do
