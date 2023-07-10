@@ -6,14 +6,15 @@
 
 `../setup-variable.sh` has been run
 
-
 ## Install bridge
 
-Run
+```bash
+chmod +x generate-app-file.sh && ./generate-app-file.sh
+```
+
+then
 
 ```bash
-./generate-app-file.sh
-# then
 docker-compose up -d
 ```
 
