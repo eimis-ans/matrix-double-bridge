@@ -1,0 +1,17 @@
+version: "3"
+services:
+  discord-bridge:
+    image: halfshot/matrix-appservice-discord:develop
+    volumes:
+      - ./matrix-appservice-discord:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.discord-bridge.rule=Host(`discord-bridge.$DOMAIN`)"
+      - "traefik.http.routers.discord-bridge.entrypoints=websecure"
+      - "traefik.http.services.discord-bridge.loadbalancer.server.port=9005"
+      - "traefik.http.routers.discord-bridge.tls=true"
+      - "traefik.http.routers.discord-bridge.tls.certresolver=letsencrypt"
+networks:
+  default:
+    external: true
+    name: ${TRAEFIK_NETWORK}
