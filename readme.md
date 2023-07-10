@@ -29,6 +29,13 @@ Follow the instructions there : [discord-bridge](discord-bridge/readme.md)
 
 Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
 
+Go to element.YOUR-DOMAIN, login and
+
+- create an unencrypted private room
+- invite @_discord_bot:matrix.YOUR-DOMAIN in it
+- enter the following command `!discord bridge ServerID ChannelID` ServerID and ChannelID being part of the url of your discord channel
+- chat 🎉
+
 ### Setup Slack bridge
 
 #### Slack bridge admin room
