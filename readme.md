@@ -49,12 +49,13 @@ Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
 Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
 
 - invite slack bot `slackbot` to your slack admin room
-- link a slack clannel 
+- invite the slack bot to the room you want to bridge and get its room id
+- link a slack clannel : in the slack admin room, write the command
 
-   ```txt
-   link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.{{ DOMAIN }} --slack_bot_token $TOKEN
-   ```
+   `link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.{{ DOMAIN }} --slack_bot_token $TOKEN`
 
-## Setup a conversation between slack and discord
+## 🗨️ Chat
 
-...
+- It's possible to link a room to both Slack and Discord.
+- bridge listened rooms aren't encrypted although it is possible <https://matrix-appservice-slack.readthedocs.io/en/latest/bridge-encryption/>
+- PM needs puppeting for the 3rd party app and, thus, a user token <https://matrix-appservice-slack.readthedocs.io/en/latest/puppeting/>
