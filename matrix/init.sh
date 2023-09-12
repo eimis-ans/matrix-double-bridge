@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .env
+source ../.env
 
 docker run -it --rm \
     -v "matrix_matrix-data:/data" \

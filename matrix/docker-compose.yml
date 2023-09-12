@@ -8,13 +8,15 @@ services:
       - ./element-config.json:/app/config.json
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.element.rule=Host(`element.${DOMAIN}`)"
-      - "traefik.http.routers.element.entrypoints=websecure"
-      - "traefik.http.services.element.loadbalancer.server.port=80"
-      - "traefik.http.routers.element.tls=true"
-      - "traefik.http.routers.element.tls.certresolver=letsencrypt"
+#      - "traefik.http.routers.element.rule=Host(`element.traefik.me`)"
+#      - "traefik.http.routers.element-matrix.tls.domains[0].main=element.traefik.me"
+#      - "traefik.http.routers.element-matrix.tls.domains[0].sans=element-*.traefik.me"
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
 
-  synapse:
+  matrix:
     image: matrixdotorg/synapse:v1.83.0
     volumes:
      - matrix-data:/data
@@ -23,16 +25,17 @@ services:
       - SYNAPSE_CONFIG_PATH=/mx-conf/homeserver.yaml
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.synapse.rule=Host(`matrix.${DOMAIN}`)"
-      - "traefik.http.routers.synapse.entrypoints=websecure"
-      - "traefik.http.services.synapse.loadbalancer.server.port=8008"
-      - "traefik.http.routers.synapse.tls=true"
-      - "traefik.http.routers.synapse.tls.certresolver=letsencrypt"
+#      - "traefik.http.routers.synapse.rule=Host(`matrix.traefik.me`)"
+#      - "traefik.http.routers.synapse-tls.tls.domains[0].main=matrix.traefik.me"
+#      - "traefik.http.routers.synapse-tls.tls.domains[0].sans=matrix-*.traefik.me"
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
 
 volumes:
   matrix-data:
 
 networks:
-  default:
+  traefikme_default:
     external: true
-    name: ${TRAEFIK_NETWORK}
