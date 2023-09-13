@@ -24,9 +24,9 @@ and wait a bit...
 ### Create new matrix user
 
 ```bash
-docker exec -it matrix_synapse_1 register_new_matrix_user -c /mx-conf/homeserver.yaml
+docker exec -it matrix_matrix_1 register_new_matrix_user -c /mx-conf/homeserver.yaml
 ```
 
 ## Log in
 
-You can go to your instance at <https://element.matrix.YOUR-DOMAIN>
+You can go to your instance at <https://element.YOUR-DOMAIN>
