@@ -8,9 +8,9 @@ services:
       - ./element-config.json:/app/config.json
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.element.rule=Host(`element.traefik.me`)"
-      - "traefik.http.routers.element-tls.tls.domains[0].main=element.traefik.me"
-      - "traefik.http.routers.element-tls.tls.domains[0].sans=element-*.traefik.me"
+      - "traefik.http.routers.element.rule=Host(`element.${DOMAIN}`)"
+      - "traefik.http.routers.element-tls.tls.domains[0].main=element.${DOMAIN}"
+      - "traefik.http.routers.element-tls.tls.domains[0].sans=element-*.${DOMAIN}"
       - "traefik.http.routers.element.tls=true"
     env_file:
       - ../.env
@@ -26,9 +26,9 @@ services:
       - SYNAPSE_CONFIG_PATH=/mx-conf/homeserver.yaml
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.synapse.rule=Host(`matrix.traefik.me`)"
-      - "traefik.http.routers.synapse-tls.tls.domains[0].main=matrix.traefik.me"
-      - "traefik.http.routers.synapse-tls.tls.domains[0].sans=matrix-*.traefik.me"
+      - "traefik.http.routers.synapse.rule=Host(`matrix.${DOMAIN}`)"
+      - "traefik.http.routers.synapse-tls.tls.domains[0].main=matrix.${DOMAIN}"
+      - "traefik.http.routers.synapse-tls.tls.domains[0].sans=matrix-*.${DOMAIN}"
       - "traefik.http.routers.synapse.tls=true"
     env_file:
       - ../.env
