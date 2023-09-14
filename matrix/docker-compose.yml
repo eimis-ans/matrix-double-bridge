@@ -35,8 +35,40 @@ services:
     networks:
       - traefikme_default
 
+  slack-bridge:
+    depends_on:
+      - slack-bridge_db
+    restart: on-failure
+    image: matrixdotorg/matrix-appservice-slack:latest
+    volumes:
+      - ./slack-bridge-config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.slack-bridge.rule=Host(`slack-bridge.${DOMAIN}`)"
+      - "traefik.http.routers.slack-bridge-tls.tls.domains[0].main=slack-bridge.${DOMAIN}"
+      - "traefik.http.routers.slack-bridge-tls.tls.domains[0].sans=slack-bridge-*.${DOMAIN}"
+      - "traefik.http.routers.slack-bridge.tls=true"
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
+
+  slack-bridge_db:
+    image: postgres:14-alpine
+    volumes:
+      - slack-bridge-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=slack_bridge
+      - POSTGRES_USER=slackbridge_user
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
+
 volumes:
   matrix-data:
+  slack-bridge-db:
 
 networks:
   traefikme_default:

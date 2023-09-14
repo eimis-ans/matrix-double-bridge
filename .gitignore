@@ -1,2 +1,7 @@
 .env
 .idea
+/matrix/element-config.json
+/matrix/slack-bridge-config/config.yaml
+/matrix/mx-conf/slack-registration.yaml
+/matrix/mx-conf/homeserver.yaml
+/matrix/slack-bridge-config/slack-registration.yaml
