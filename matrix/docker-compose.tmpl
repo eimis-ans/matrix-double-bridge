@@ -41,6 +41,7 @@ services:
   slack-bridge:
     depends_on:
       - slack-bridge_db
+      - matrix
     restart: on-failure
     image: matrixdotorg/matrix-appservice-slack:latest
     volumes:
@@ -48,6 +49,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.slack-bridge.rule=Host(`slack-bridge.${DOMAIN}`)"
+      - "traefik.http.routers.slack-bridge.rule=HostRegexp(`slack-bridge.{ip:.*}.${DOMAIN}`)"
       - "traefik.http.routers.slack-bridge-tls.tls.domains[0].main=slack-bridge.${DOMAIN}"
       - "traefik.http.routers.slack-bridge-tls.tls.domains[0].sans=slack-bridge-*.${DOMAIN}"
       - "traefik.http.routers.slack-bridge.tls=true"
@@ -70,7 +72,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.postgresql.rule=Host(`postgresql.${DOMAIN}`)"
-      - "traefik.http.routers.postgresql.rule=HostRegexp(`matrix.{ip:.*}.${DOMAIN}`)"
+      - "traefik.http.routers.postgresql.rule=HostRegexp(`postgresql.{ip:.*}.${DOMAIN}`)"
       - "traefik.http.routers.postgresql-tls.tls.domains[0].main=postgresql.${DOMAIN}"
       - "traefik.http.routers.postgresql-tls.tls.domains[0].sans=postgresql-*.${DOMAIN}"
       - "traefik.http.routers.postgresql.tls=true"
@@ -78,6 +80,29 @@ services:
       - ../.env
     networks:
       - traefikme_default
+
+  discord-bridge:
+    depends_on:
+      - matrix
+    restart: on-failure
+    image: halfshot/matrix-appservice-discord:develop
+    volumes:
+      - ./discord-bridge-config:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.discord-bridge.rule=Host(`discord-bridge.$DOMAIN`)"
+      - "traefik.http.routers.discord-bridge.rule=HostRegexp(`discord-bridge.{ip:.*}.${DOMAIN}`)"
+      - "traefik.http.routers.discord-bridge-tls.tls.domains[0].main=discord-bridge.${DOMAIN}"
+      - "traefik.http.routers.discord-bridge-tls.tls.domains[0].sans=discord-bridge-*.${DOMAIN}"
+      - "traefik.http.routers.discord-bridge.tls=true"
+    extra_hosts:
+      - "matrix.${DOMAIN}:host-gateway"
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
+    extra_hosts:
+      - "matrix.traefik.me:host-gateway"
 
 volumes:
   matrix-data:

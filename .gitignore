@@ -1,7 +1,12 @@
 .env
 .idea
 /matrix/element-config.json
+/matrix/docker-compose.yml
 /matrix/slack-bridge-config/config.yaml
+/matrix/slack-bridge-config/slack-registration.yaml
+/matrix/discord-bridge-config/discord-registration.yaml
+/matrix/discord-bridge-config/config.yaml
+/matrix/discord-bridge-config/discord.db*
 /matrix/mx-conf/slack-registration.yaml
 /matrix/mx-conf/homeserver.yaml
-/matrix/slack-bridge-config/slack-registration.yaml
+/matrix/mx-conf/discord-registration.yaml
