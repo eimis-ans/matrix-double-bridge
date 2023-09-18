@@ -29,4 +29,17 @@ cp ./slack-bridge-config/slack-registration.yaml ./mx-conf/
 yq -i '.app_service_config_files += ["/mx-conf/slack-registration.yaml"]' ./mx-conf/homeserver.yaml
 echo "Done."
 
+# Initialize discord-bridge configuration
+echo "Generating config files for discord-bridge ..."
+envsubst <"discord-bridge-config/config.tmpl" >discord-bridge-config/config.yaml
+docker run -v ./discord-bridge-config:/data \
+halfshot/matrix-appservice-discord:latest node build/src/discordas.js -r \
+-u "https://discord-bridge.$DOMAIN" -c /data/config.yml -f /data/discord-registration.yaml
+cp ./discord-bridge-config/discord-registration.yaml ./mx-conf/
+yq -i '.app_service_config_files += ["/mx-conf/discord-registration.yaml"]' ./mx-conf/homeserver.yaml
+echo "Done."
 
+# Replace placeholders in docker-compose file (because of the $%§#! extra_hosts)
+echo "Replacing placeholders in docker-compose ..."
+envsubst <"docker-compose.tmpl" > docker-compose.yml
+echo "Done."
