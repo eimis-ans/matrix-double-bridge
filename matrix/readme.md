@@ -1,32 +1,34 @@
-# Synapse instance
+# Synapse configuration
+- Run this script to generate the synapse configuration files
+    ```bash
+    chmod +x init.sh
+    ./init.sh
+    ```
 
-## Prerequisites
+- Start Synapse and Element
+    ```bash
+    docker-compose up -d
+    ```
+    and wait until matrix container is healthy
 
-`../setup-variable.sh` has been run
+- Create new matrix user
+    ```bash
+    docker exec -it matrix_matrix_1 register_new_matrix_user -u admin -a -c /mx-conf/homeserver.yaml
+    ```
+    And enter the password when asked by the prompt.
 
-### Matrix configuration
 
-Run this script to generate a signing key
+- Log in
+You can go to your instance at <https://element.YOUR-DOMAIN> and login with the credentials you used at the previous step
 
-```bash
-chmod +x init.sh
-./init.sh
-```
 
-## start
+- Create the bridge control room
+Manually create a new unencrypted Matrix room to act as the administration control room. 
+Note its internal room ID (Example: !abcdefg12345hijk:matrix.traefik.me).
+Report it in the ../.env file in the SLACK_BRIDGE_ADMIN_ROOM variable.
 
-```bash
-docker-compose up -d
-```
 
-and wait a bit...
-
-### Create new matrix user
-
-```bash
-docker exec -it matrix_matrix_1 register_new_matrix_user -c /mx-conf/homeserver.yaml
-```
-
-## Log in
-
-You can go to your instance at <https://element.YOUR-DOMAIN>
+-  Stop Synapse and Element
+    ```bash
+    docker-compose down
+    ```

@@ -1,0 +1,52 @@
+version: "3.3"
+
+services:
+
+  slack-bridge:
+    depends_on:
+      - slack-bridge_db
+    restart: on-failure
+    image: matrixdotorg/matrix-appservice-slack:latest
+    volumes:
+      - ./slack-bridge-config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.slack-bridge.rule=Host(`slack-bridge.${DOMAIN}`)"
+      - "traefik.http.routers.slack-bridge.rule=HostRegexp(`slack-bridge.{ip:.*}.${DOMAIN}`)"
+      - "traefik.http.routers.slack-bridge-tls.tls.domains[0].main=slack-bridge.${DOMAIN}"
+      - "traefik.http.routers.slack-bridge-tls.tls.domains[0].sans=slack-bridge-*.${DOMAIN}"
+      - "traefik.http.routers.slack-bridge.tls=true"
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
+    extra_hosts:
+      - "postgresql.${DOMAIN}:host-gateway"
+      - "matrix.${DOMAIN}:host-gateway"
+
+  slack-bridge_db:
+    image: postgres:14-alpine
+    volumes:
+      - slack-bridge-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=slack_bridge
+      - POSTGRES_USER=slackbridge_user
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.postgresql.rule=Host(`postgresql.${DOMAIN}`)"
+      - "traefik.http.routers.postgresql.rule=HostRegexp(`postgresql.{ip:.*}.${DOMAIN}`)"
+      - "traefik.http.routers.postgresql-tls.tls.domains[0].main=postgresql.${DOMAIN}"
+      - "traefik.http.routers.postgresql-tls.tls.domains[0].sans=postgresql-*.${DOMAIN}"
+      - "traefik.http.routers.postgresql.tls=true"
+    env_file:
+      - ../.env
+    networks:
+      - traefikme_default
+
+volumes:
+  slack-bridge-db:
+
+networks:
+  traefikme_default:
+    external: true
