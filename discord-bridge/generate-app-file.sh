@@ -12,4 +12,4 @@ if [ -d "$MATRIX_FOLDER" ]; then
   cp ./matrix-appservice-discord/discord-registration.yaml $MATRIX_FOLDER
 fi
 
-yq -i -y '.app_service_config_files += ["/mx-conf/discord-registration.yaml"]' $MATRIX_FOLDER/homeserver.yaml
+yq -i '.app_service_config_files += ["/mx-conf/discord-registration.yaml"]' $MATRIX_FOLDER/homeserver.yaml
