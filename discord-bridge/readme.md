@@ -16,12 +16,6 @@ At this point you should be able to fill `DISCORD_BOT_TOKEN` and `DISCORD_CLIENT
 
 ## Create registration file
 
-You'll need to be able to write in mx-conf directory
-
-```bash
-sudo chmod a+w ../matrix/mx-conf/*
-```
-
 ```bash
 chmod +x generate-app-file.sh && ./generate-app-file.sh
 ```

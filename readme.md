@@ -31,6 +31,12 @@ edit `/etc/hosts` to add
 
 Follow the instructions there : [Matrix](matrix/readme.md)
 
+You'll need to be able to write in mx-conf directory
+
+```bash
+sudo chmod a+w ./matrix/mx-conf/*
+```
+
 ### Setup discord bridge
 
 Follow the instructions there : [discord-bridge](discord-bridge/readme.md)
@@ -58,11 +64,17 @@ Follow the instructions there : [slack-bridge](slack-bridge/readme.md)
 
 Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
 
+On element:
+
 - invite slack bot `slackbot` to your slack admin room
 - invite the slack bot to the room you want to bridge and get its room id
 - link a slack clannel : in the slack admin room, write the command
 
    `link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.{{ DOMAIN }} --slack_bot_token $TOKEN`
+
+On Slack:
+
+- Also don't forget to invite the slack bot to the slack channel
 
 ## 🗨️ Chat
 
