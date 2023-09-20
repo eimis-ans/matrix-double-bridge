@@ -29,4 +29,4 @@ docker exec -it matrix_synapse_1 register_new_matrix_user -c /mx-conf/homeserver
 
 ## Log in
 
-You can go to your instance at <https://element.matrix.YOUR-DOMAIN>
+You can go to your instance at <http://localhost:8083>
