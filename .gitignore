@@ -10,6 +10,7 @@
 /matrix/mx-conf/slack-registration.yaml
 /matrix/mx-conf/homeserver.yaml
 /matrix/mx-conf/discord-registration.yaml
+/matrix/mx-data
 /slack-bridge/docker-compose.yml
 /slack-bridge/slack-bridge-config/slack-registration.yaml
 /slack-bridge/slack-bridge-config/config.yaml
