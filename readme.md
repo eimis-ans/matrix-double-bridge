@@ -37,7 +37,9 @@ Follow the instructions there : [discord-bridge](discord-bridge/readme.md)
 
 Then restart synapse `cd matrix && docker-compose down && docker-compose up -d`
 
-Go to element.YOUR-DOMAIN, login and
+Start Discord bridge `cd discord-bridge && docker-compose up -d`
+
+Go to element <http://localhost:8083>, login and
 
 - create an unencrypted private room
 - invite @_discord_bot:matrix.YOUR-DOMAIN in it

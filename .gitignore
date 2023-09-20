@@ -1,2 +1,4 @@
 .env
-mx-conf/*
+matrix/mx-conf/*
+*.db
+*.backup

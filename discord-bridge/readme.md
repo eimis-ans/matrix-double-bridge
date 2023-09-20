@@ -16,14 +16,14 @@ At this point you should be able to fill `DISCORD_BOT_TOKEN` and `DISCORD_CLIENT
 
 ## Create registration file
 
+You'll need to be able to write in mx-conf directory
+
 ```bash
-chmod +x generate-app-file.sh && ./generate-app-file.sh
+sudo chmod a+w ../matrix/mx-conf/*
 ```
 
-then
-
 ```bash
-docker-compose up -d
+chmod +x generate-app-file.sh && ./generate-app-file.sh
 ```
 
 ## ⚠️ Caveat
