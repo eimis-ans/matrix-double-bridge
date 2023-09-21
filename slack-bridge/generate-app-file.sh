@@ -10,4 +10,4 @@ if [ -d "$MATRIX_FOLDER" ]; then
   cp ./config/slack-registration.yaml $MATRIX_FOLDER
 fi
 
-yq -i -y '.app_service_config_files += ["/mx-conf/slack-registration.yaml"]' $MATRIX_FOLDER/homeserver.yaml
+yq -i '.app_service_config_files += ["/mx-conf/slack-registration.yaml"]' $MATRIX_FOLDER/homeserver.yaml

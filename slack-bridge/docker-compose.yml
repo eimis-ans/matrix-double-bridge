@@ -2,6 +2,7 @@ version: "3"
 services:
   slack-bridge:
     image: matrixdotorg/matrix-appservice-slack:latest
+    restart: on-failure
     volumes:
       - ./config:/config
     network_mode: "host"
