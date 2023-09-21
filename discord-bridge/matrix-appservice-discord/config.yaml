@@ -41,7 +41,7 @@ bridge:
   # Auto-determine the language of code blocks (this can be CPU-intensive)
   determineCodeLanguage: false
   # MXID of an admin user that will be PMd if the bridge experiences problems. Optional
-  adminMxid: '@root:matrix.local'
+  adminMxid: '@root:matrix.{{ DOMAIN }}'
   # The message to send to the bridge admin if the Discord token is not valid
   invalidTokenMessage: 'Your Discord bot token seems to be invalid, and the bridge cannot function. Please update it in your bridge settings and restart the bridge'
 # Authentication configuration for the discord bot.

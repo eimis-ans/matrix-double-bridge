@@ -12,13 +12,19 @@ Go to <https://discord.com/api/oauth2/authorize?client_id=${CLIENT_IT}&scope=bot
 
 ## Bridge setup
 
-At this point you should be able to fill `DISCORD_BOT_TOKEN` and `DISCORD_CLIENT_ID` in the root `.env` file then run `../setup-variable.sh`
+At this point you should be able :
+- to fill `DISCORD_BOT_TOKEN` and `DISCORD_CLIENT_ID` in the root `.env` file then run `../setup-variable.sh`
+- OR change manually the `DISCORD_BOT_TOKEN` and `DISCORD_CLIENT_ID` values in matrix-appservice-discord/config.yaml
 
 ## Create registration file
-
-```bash
-chmod +x generate-app-file.sh && ./generate-app-file.sh
-```
+- Linux :
+    ```bash
+    chmod +x generate-app-file.sh && ./generate-app-file.sh
+    ```
+- Windows :
+    ```powershell
+    .\generate-app-file.ps1
+    ```
 
 Then restart synapse `cd ../matrix && docker-compose down && docker-compose up -d`
 
