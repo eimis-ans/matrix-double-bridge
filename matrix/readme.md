@@ -12,10 +12,11 @@ Run this script to generate a signing key
 chmod +x init.sh
 sudo ./init.sh
 ```
+
 You'll need to be able to write in mx-conf directory
 
 ```bash
-sudo chmod a+w ./mx-conf/*
+sudo chmod a+w -R ./mx-conf/
 ```
 
 ## start
