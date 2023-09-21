@@ -2,30 +2,27 @@ version: "3"
 services:
   slack-bridge:
     image: matrixdotorg/matrix-appservice-slack:latest
+    restart: on-failure
     volumes:
       - ./config:/config
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.slack-bridge.rule=Host(`slack-bridge.$DOMAIN`)"
-      - "traefik.http.routers.slack-bridge.entrypoints=websecure"
-      - "traefik.http.services.slack-bridge.loadbalancer.server.port=5858"
-      - "traefik.http.routers.slack-bridge.tls=true"
-      - "traefik.http.routers.slack-bridge.tls.certresolver=letsencrypt"
+    networks:
+      - matrix_net
 
   slack-bridge_db:
     image: postgres:14-alpine
     volumes:
-     - slack-bridge-db:/var/lib/postgresql/data
+      - slack-bridge-db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=slack_bridge
       - POSTGRES_USER=slackbridge_user
       - POSTGRES_PASSWORD=${PG_SLACK_BRIDGE_PASSWORD}
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    networks:
+      - matrix_net
 
 volumes:
   slack-bridge-db:
 
 networks:
-  default:
+  matrix_net:
     external: true
-    name: ${TRAEFIK_NETWORK}

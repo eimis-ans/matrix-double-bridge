@@ -5,7 +5,7 @@ homeserver:
 
   # The URL for connecting to your homeserver
   #
-  url: https://matrix.{{ DOMAIN }}
+  url: http://synapse:8008
 
   # The public facing url for media on your homeserver.
   # This is usually the public url of your homeserver.
@@ -44,7 +44,7 @@ db:
 
   # A postgres connection string (unused if using nedb)
   #
-  connectionString: "postgresql://slackbridge_user:{{ PG_SLACK_BRIDGE_PASSWORD }}@slack-bridge_db/slack_bridge"
+  connectionString: "postgresql://slackbridge_user:{{ PG_SLACK_BRIDGE_PASSWORD }}@slack-bridge_db:5432/slack_bridge"
 
 # Optional. Use a matrix room to issue link and unlink commands to the bridge
 #
@@ -84,7 +84,7 @@ slack_hook_port: 9898
 # as this one must be publicly visible to the Slack API.
 # Optional if using RTM API, required otherwise.
 #
-# inbound_uri_prefix: "https://slack-bridge.{{ DOMAIN }}"
+# inbound_uri_prefix: "https://slack-bridge.local"
 
 # Optional. Allow users to add channels dynamically by using oauth, or puppet themselves.
 #
