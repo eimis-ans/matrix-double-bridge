@@ -12,12 +12,10 @@ With the deployment of a Synapse instance with it's Element client and 2 bridges
 
 ## Installations
 
-edit `/etc/hosts` to add
+edit `/etc/hosts` (or `C:\Windows\System32\drivers\etc\hosts`) to add
 
 ```txt
 127.0.0.1       matrix.local
-127.0.0.1       slack.bridge.local
-127.0.0.1       discord.bridge.local
 ```
 
 ### Set variables

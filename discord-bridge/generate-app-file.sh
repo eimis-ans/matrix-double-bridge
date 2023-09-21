@@ -6,7 +6,7 @@ MATRIX_FOLDER="../matrix/mx-conf"
 # generate app service file
 docker run -v ./matrix-appservice-discord:/data \
 halfshot/matrix-appservice-discord:latest node build/src/discordas.js -r \
--u "http://discord.bridge.$DOMAIN:9005" -c /data/config.yml -f /data/discord-registration.yaml
+-u "http://discord-bridge:9005" -c /data/config.yml -f /data/discord-registration.yaml
 
 if [ -d "$MATRIX_FOLDER" ]; then
   cp ./matrix-appservice-discord/discord-registration.yaml $MATRIX_FOLDER

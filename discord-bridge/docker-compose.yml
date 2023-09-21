@@ -4,4 +4,11 @@ services:
     image: halfshot/matrix-appservice-discord:develop
     volumes:
       - ./matrix-appservice-discord:/data
-    network_mode: "host"
+    ports:
+      - 9005:9005
+    networks:
+      - matrix_net
+
+networks:
+  matrix_net:
+    external: true
