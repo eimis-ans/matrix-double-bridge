@@ -1,7 +1,7 @@
 homeserver:
   # The domain name of your homeserver
   #
-  server_name: matrix.{{ DOMAIN }}
+  server_name: matrix.local
 
   # The URL for connecting to your homeserver
   #

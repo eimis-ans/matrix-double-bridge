@@ -34,8 +34,8 @@ On element:
 - invite the slack bot to the room you want to bridge and get its room id
 - link a slack channel : in the slack admin room, write the command
 
-  `link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.{{ DOMAIN }} --slack_bot_token $TOKEN`
+  `link --channel_id $CHANNEL_ID --room $ROOM_ID:matrix.local --slack_bot_token $TOKEN`
 
 On Slack:
 
-- Also don't forget to invite the slack bot to the slack channel
+- Also don't forget to invite the slack bot to the slack channel (App / your invite to a channel / select your channel )
