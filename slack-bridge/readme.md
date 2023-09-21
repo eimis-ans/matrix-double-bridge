@@ -38,4 +38,4 @@ On element:
 
 On Slack:
 
-- Also don't forget to invite the slack bot to the slack channel
+- Also don't forget to invite the slack bot to the slack channel (App / your invite to a channel / select your channel )
