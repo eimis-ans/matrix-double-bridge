@@ -9,6 +9,4 @@ Copy-Item -Path "${PWD}\matrix-appservice-discord\discord-registration.yaml" `
           -Destination "${PWD}\..\matrix\mx-conf"
 
 echo "Registring discord-registration.yaml in Synapse configuration file"
-#yq_windows_amd64.exe -i '.app_service_config_files += ["/mx-conf/discord-registration.yaml"]' `
-#                        "${PWD}\..\matrix\mx-conf\homeserver.yaml"
-yq_windows_amd64.exe -i '.app_service_config_files += [""prout""]' "${PWD}\..\matrix\mx-conf\homeserver.yaml"
+yq_windows_amd64.exe -i '.app_service_config_files += [\"/mx-conf/discord-registration.yaml\"]' "${PWD}\..\matrix\mx-conf\homeserver.yaml"
