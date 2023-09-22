@@ -5,3 +5,4 @@ matrix/mx-data/*
 *.backup
 .idea
 /discord-bridge/matrix-appservice-discord/discord-registration.yaml
+/slack-bridge/config/slack-registration.yaml

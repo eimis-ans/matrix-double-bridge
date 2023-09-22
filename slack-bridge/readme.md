@@ -9,16 +9,16 @@
 - Go to element and create a private unencrypted room for slack bot admin. get the room ID and fill SLACK_BRIDGE_ADMIN_ROOM in root `.env` var. then run `./setup-variable.sh`
 
 ## Install bridge
+- Linux :
+    ```bash
+    chmod +x generate-app-file.sh && ./generate-app-file.sh
+    ```
+- Windows :
+    ```powershell
+    .\generate-app-file.ps1
+    ```
 
-```bash
-chmod +x generate-app-file.sh && ./generate-app-file.sh
-```
-
-then
-
-```bash
-docker-compose up -d
-```
+Then restart synapse `cd ../matrix && docker-compose down && docker-compose up -d`
 
 ### Configure Slack application
 
