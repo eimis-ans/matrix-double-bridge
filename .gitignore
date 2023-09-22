@@ -4,3 +4,4 @@ matrix/mx-data/*
 *.db
 *.backup
 .idea
+/discord-bridge/matrix-appservice-discord/discord-registration.yaml
