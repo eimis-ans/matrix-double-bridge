@@ -15,7 +15,7 @@ With the deployment of a Synapse instance with it's Element client and 2 bridges
 
 Add "matrix.local" to the hosts file :
 - edit `/etc/hosts` for linux
-- edit `C:\Windows\System32\drivers\etc\hosts`
+- edit `C:\Windows\System32\drivers\etc\hosts` for Windows
 and add
 
 ```txt
