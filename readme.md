@@ -6,13 +6,17 @@ With the deployment of a Synapse instance with it's Element client and 2 bridges
 
 ## Prerequisites
 
-- a server with docker and docker-compose installed
-- traefik running and configured with a domain name
-- [yq](https://github.com/kislyuk/yq) package installed
+- a machine with docker and docker-compose installed
+- yq package installed : 
+  - https://github.com/kislyuk/yq for linux
+  - https://github.com/mikefarah/yq#windows for windows
 
 ## Installations
 
-edit `/etc/hosts` (or `C:\Windows\System32\drivers\etc\hosts`) to add
+Add "matrix.local" to the hosts file :
+- edit `/etc/hosts` for linux
+- edit `C:\Windows\System32\drivers\etc\hosts`
+and add
 
 ```txt
 127.0.0.1       matrix.local
@@ -20,10 +24,16 @@ edit `/etc/hosts` (or `C:\Windows\System32\drivers\etc\hosts`) to add
 
 ### Set variables
 
-- Run `cp .env_template .env`
-- Run `chmod +x setup-variables.sh`
-- Set variables then run `./setup-variables.sh`
-  (this script can be run each time a line is filled in .env file)
+- Linux 
+  - Run `cp .env_template .env`
+  - Run `chmod +x setup-variables.sh`
+  - Set variables then run `./setup-variables.sh`
+    (this script can be run each time a line is filled in .env file)
+
+- Windows
+  - Run `cp .env_template .env`
+  - fill it with relevant values
+  - manually report this values where each placeholder is present in the code
 
 ### Setup matrix
 

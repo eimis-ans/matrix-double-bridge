@@ -31,7 +31,7 @@
 docker-compose up -d
 ```
 
-and wait a bit...
+and wait a bit until synapse container is healthy
 
 ### Create new matrix user
 - Linux
@@ -43,5 +43,5 @@ and wait a bit...
   docker exec -it matrix-synapse-1 register_new_matrix_user -u admin_matrix -a -c /mx-conf/homeserver.yaml
   ```
 ## Log in
-You can check that synapse server is running at http://localhost:8008/_matrix/static/
+You can check that synapse server is running at http://matrix.local:8008/_matrix/static/
 You can login to element at http://localhost:8083
