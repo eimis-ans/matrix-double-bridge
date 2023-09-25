@@ -3,3 +3,5 @@ matrix/mx-conf/*
 matrix/mx-data/*
 *.db
 *.backup
+.idea
+*registration.yaml
